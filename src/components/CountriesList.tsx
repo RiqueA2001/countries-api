@@ -29,7 +29,7 @@ const CountriesList: React.FC<Props> = ({
   loading,
   error
 }) => {
-  const themeCtx = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext)
 
   if (loading) {
     return <p className="mt-4">Loading...</p>
@@ -54,15 +54,7 @@ const CountriesList: React.FC<Props> = ({
       {listIndex < countries.length && (
         <button
           onClick={() => setListIndex(prev => prev + 8)}
-          className={`py-[0.5rem] px-[2rem] mt-[4rem] block mx-auto rounded-[5px] shadow-lg ${
-            themeCtx.theme?.background === 'light'
-              ? 'bg-white'
-              : 'bg-darkModeElements'
-          } ${
-            themeCtx.theme?.text === 'light'
-              ? 'text-lightModeText'
-              : 'text-darkModeText'
-          }`}
+          className={`py-[0.5rem] px-[2rem] mt-[4rem] block mx-auto rounded-[5px] shadow-lg ${theme?.elementBg} ${theme?.font}`}
         >
           Load more
         </button>
